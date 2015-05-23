@@ -3,6 +3,7 @@ package com.example.yu.databasetest;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private MyDatabaseHelper dbHelper;
+    private String newId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,5 +124,54 @@ public class MainActivity extends AppCompatActivity {
         }finally {
             db.endTransaction();    //事务结束
         }
+    }
+
+    public void AddToBook(View view) {
+        //添加数据
+        Uri uri = Uri.parse("content://com.example.yu.databasetest.provider/book");
+        ContentValues values = new ContentValues();
+        values.put("name", "A Clash of Kings");
+        values.put("author", "George Martin");
+        values.put("pages", 1040);
+        values.put("price", 22.85);
+        Uri newUri = getContentResolver().insert(uri,values);
+        newId = newUri.getPathSegments().get(1);
+    }
+
+    public void QueryBook(View view) {
+        //查询数据
+        Uri uri = Uri.parse("content://com.example.yu.databasetest.provider/book");
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        if (cursor != null){
+            while (cursor.moveToNext()){
+                String name = cursor.getString(cursor.getColumnIndex("name"));
+                String author = cursor.getString(cursor.getColumnIndex("author"));
+                int pages = cursor.getInt(cursor.getColumnIndex("pages"));
+                double price = cursor.getDouble(cursor.getColumnIndex("price"));
+
+                Log.d("MainActivity", "book name is " + name);
+                Log.d("MainActivity", "book author is " + author);
+                Log.d("MainActivity", "book pages is " + pages);
+                Log.d("MainActivity", "book price is " + price);
+
+            }
+            cursor.close();
+        }
+    }
+
+    public void UpdateBook(View view) {
+        //更新数据
+        Uri uri = Uri.parse("content://com.example.yu.databasetest.provider/book/" + newId);
+        ContentValues values = new ContentValues();
+        values.put("name", "A Storm of Swords");
+        values.put("pages", 1216);
+        values.put("price", 24.05);
+        getContentResolver().update(uri, values, null, null);
+    }
+
+    public void DeleteBook(View view) {
+        //删除数据
+        Uri uri = Uri.parse("content://com.example.yu.databasetest.provider/book/" + newId);
+        getContentResolver().delete(uri, null, null);
     }
 }

@@ -3,45 +3,118 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/create_database"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create database"
-        android:onClick="CreateDatabase"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/add_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add data"
-        android:onClick="AddData"/>
+        <Button
+            android:id="@+id/add_book"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add To Book"
+            android:onClick="AddToBook"/>
 
-    <Button
-        android:id="@+id/update_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Update data"
-        android:onClick="UpdateData"/>
+        <Button
+            android:id="@+id/query_book"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Query Frome Book"
+            android:onClick="QueryBook"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/delete_data"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Delete data"
-        android:onClick="DeleteData"/>
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/query_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Query data"
-        android:onClick="QueryData"/>
+        <Button
+            android:id="@+id/update_book"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update Book"
+            android:onClick="UpdateBook"/>
 
-    <Button
-        android:id="@+id/replace_data"
+        <Button
+            android:id="@+id/delete_book"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete Frome Book"
+            android:onClick="DeleteBook"/>
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Replace data"
-        android:onClick="ReplaceData"/>
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/create_database"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Create database"
+            android:onClick="CreateDatabase"/>
+
+        <Button
+            android:id="@+id/add_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add data"
+            android:onClick="AddData"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/update_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Update data"
+            android:onClick="UpdateData"/>
+
+        <Button
+            android:id="@+id/delete_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete data"
+            android:onClick="DeleteData"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/query_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Query data"
+            android:onClick="QueryData"/>
+
+        <Button
+            android:id="@+id/replace_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Replace data"
+            android:onClick="ReplaceData"/>
+    </LinearLayout>
+
+
 </LinearLayout>
